@@ -216,6 +216,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // );
 
 //---------------Class State Management
+
+//---------------Employee click count
 // class Employee extends React.Component {
 //   state = { clickCount: 0 };
 //   //clickCount = 0;
@@ -244,52 +246,53 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // const element = <Employee></Employee>;
 
-class AddNumberComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
-  }
+//---------------AddNumber Component
+// class AddNumberComponent extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
+//   }
 
-  onCalculateSum = () => {
-    this.setState({
-      sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
-    });
-  };
+//   onCalculateSum = () => {
+//     this.setState({
+//       sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
+//     });
+//   };
 
-  onInputChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
+//   onInputChange = (event) => {
+//     this.setState({
+//       [event.target.name]: event.target.value,
+//     });
+//   };
 
-  render() {
-    return (
-      <div>
-        <p>
-          <label>First Number </label>
-          <input
-            type="number"
-            name="firstNumber"
-            onChange={this.onInputChange}
-          ></input>
-        </p>
-        <p>
-          <label>Second Number </label>
-          <input
-            type="number"
-            name="secondNumber"
-            onChange={this.onInputChange}
-          ></input>
-        </p>
-        <p>
-          <label> Sum: {this.state.sum}</label>
-        </p>
-        <p>
-          <button onClick={this.onCalculateSum}>Calculate</button>
-        </p>
-      </div>
-    );
-  }
-}
-const element = <AddNumberComponent></AddNumberComponent>;
-root.render(element);
+//   render() {
+//     return (
+//       <div>
+//         <p>
+//           <label>First Number </label>
+//           <input
+//             type="number"
+//             name="firstNumber"
+//             onChange={this.onInputChange}
+//           ></input>
+//         </p>
+//         <p>
+//           <label>Second Number </label>
+//           <input
+//             type="number"
+//             name="secondNumber"
+//             onChange={this.onInputChange}
+//           ></input>
+//         </p>
+//         <p>
+//           <label> Sum: {this.state.sum}</label>
+//         </p>
+//         <p>
+//           <button onClick={this.onCalculateSum}>Calculate</button>
+//         </p>
+//       </div>
+//     );
+//   }
+// }
+// const element = <AddNumberComponent></AddNumberComponent>;
+// root.render(element);
