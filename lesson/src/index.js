@@ -1,4 +1,3 @@
-import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
@@ -246,53 +245,94 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // const element = <Employee></Employee>;
 
-//---------------AddNumber Component
-// class AddNumberComponent extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
+// class CharacterCounter extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { characterCount: 0, textEntered: "" };
 //   }
 
-//   onCalculateSum = () => {
-//     this.setState({
-//       sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
-//     });
+//   onCountCharacters = () => {
+//     let text = this.state.textEntered;
+//     this.setState({ characterCount: text.length });
 //   };
 
-//   onInputChange = (event) => {
-//     this.setState({
-//       [event.target.name]: event.target.value,
-//     });
+//   onTextChange = (event) => {
+//     let newText = event.target.value;
+//     this.setState({ textEntered: newText });
 //   };
 
 //   render() {
 //     return (
 //       <div>
+//         <h2>Character Counter</h2>
 //         <p>
-//           <label>First Number </label>
-//           <input
-//             type="number"
-//             name="firstNumber"
-//             onChange={this.onInputChange}
-//           ></input>
+//           <label>Enter a text </label>
+//           <input type="text" onChange={this.onTextChange}></input>
 //         </p>
 //         <p>
-//           <label>Second Number </label>
-//           <input
-//             type="number"
-//             name="secondNumber"
-//             onChange={this.onInputChange}
-//           ></input>
+//           <label>
+//             The text has {this.state.characterCount} number of characters
+//           </label>
 //         </p>
 //         <p>
-//           <label> Sum: {this.state.sum}</label>
-//         </p>
-//         <p>
-//           <button onClick={this.onCalculateSum}>Calculate</button>
+//           <button onClick={this.onCountCharacters}>Count</button>
 //         </p>
 //       </div>
 //     );
 //   }
 // }
-// const element = <AddNumberComponent></AddNumberComponent>;
-// root.render(element);
+
+// const element = <CharacterCounter></CharacterCounter>;
+
+//---------------AddNumber Component
+class AddNumberComponent extends React.Component {
+  constructor() {
+    super();
+    this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
+  }
+
+  onCalculateSum = () => {
+    this.setState({
+      sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
+    });
+  };
+
+  onInputChange = (event) => {
+    let value = event.target.value;
+    this.setState({
+      [event.target.name]: value,
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <p>
+          <label>First Number </label>
+          <input
+            type="number"
+            name="firstNumber"
+            onChange={this.onInputChange}
+          ></input>
+        </p>
+        <p>
+          <label>Second Number </label>
+          <input
+            type="number"
+            name="secondNumber"
+            onChange={this.onInputChange}
+          ></input>
+        </p>
+        <p>
+          <label> Sum: {this.state.sum}</label>
+        </p>
+        <p>
+          <button onClick={this.onCalculateSum}>Calculate</button>
+        </p>
+      </div>
+    );
+  }
+}
+const element = <AddNumberComponent></AddNumberComponent>;
+
+root.render(element);
