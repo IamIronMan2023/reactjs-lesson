@@ -285,54 +285,149 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // const element = <CharacterCounter></CharacterCounter>;
 
 //---------------AddNumber Component
-class AddNumberComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
+// class AddNumberComponent extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = { sum: 0, firstNumber: 0, secondNumber: 0 };
+//   }
+
+//   onCalculateSum = () => {
+//     this.setState({
+//       sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
+//     });
+//   };
+
+//   onInputChange = (event) => {
+//     let value = event.target.value;
+//     this.setState({
+//       [event.target.name]: value,
+//     });
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <p>
+//           <label>First Number </label>
+//           <input
+//             type="number"
+//             name="firstNumber"
+//             onChange={this.onInputChange}
+//           ></input>
+//         </p>
+//         <p>
+//           <label>Second Number </label>
+//           <input
+//             type="number"
+//             name="secondNumber"
+//             onChange={this.onInputChange}
+//           ></input>
+//         </p>
+//         <p>
+//           <label> Sum: {this.state.sum}</label>
+//         </p>
+//         <p>
+//           <button onClick={this.onCalculateSum}>Calculate</button>
+//         </p>
+//       </div>
+//     );
+//   }
+// }
+// const element = <AddNumberComponent></AddNumberComponent>;
+
+class Employee extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { monthlySalary: 0 };
   }
 
-  onCalculateSum = () => {
-    this.setState({
-      sum: parseInt(this.state.firstNumber) + parseInt(this.state.secondNumber),
-    });
-  };
-
-  onInputChange = (event) => {
-    let value = event.target.value;
-    this.setState({
-      [event.target.name]: value,
-    });
+  getUpdatedSalary = (salary) => {
+    this.setState({ monthlySalary: salary });
   };
 
   render() {
     return (
       <div>
+        <h2>Employee Profile</h2>
         <p>
-          <label>First Number </label>
-          <input
-            type="number"
-            name="firstNumber"
-            onChange={this.onInputChange}
-          ></input>
+          <label>
+            Employee ID: <b>{this.props.Id}</b>
+          </label>
         </p>
         <p>
-          <label>Second Number </label>
-          <input
-            type="number"
-            name="secondNumber"
-            onChange={this.onInputChange}
-          ></input>
+          <label>
+            Employee First Name: <b>{this.props.firstName}</b>
+          </label>
         </p>
         <p>
-          <label> Sum: {this.state.sum}</label>
+          <label>
+            Employee Last Name: <b>{this.props.lastName}</b>
+          </label>
         </p>
         <p>
-          <button onClick={this.onCalculateSum}>Calculate</button>
+          <label>
+            Employee Age: <b>{this.props.age}</b>
+          </label>
         </p>
+        <p>
+          <label>
+            Monthly Salary: <b>{this.state.monthlySalary.toFixed(2)}</b>
+          </label>
+        </p>
+        <Salary onMonthlySalaryChanged={this.getUpdatedSalary}></Salary>
       </div>
     );
   }
 }
-const element = <AddNumberComponent></AddNumberComponent>;
+
+class Salary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { dailyRate: 0, noOfDays: 30 };
+  }
+
+  onInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  updateSalary = () => {
+    let salary =
+      parseFloat(this.state.dailyRate) * parseFloat(this.state.noOfDays);
+    this.props.onMonthlySalaryChanged(salary);
+  };
+
+  render() {
+    return (
+      <div>
+        <h2>Salary Details</h2>
+        <p>
+          <label>Daily Rate:</label>
+          <input
+            type="number"
+            name="dailyRate"
+            onChange={this.onInputChange}
+            value={this.state.dailyRate}
+          ></input>
+        </p>
+        <p>
+          <label>No. of Days in month:</label>
+          <input
+            type="number"
+            name="noOfDays"
+            onChange={this.onInputChange}
+            value={this.state.noOfDays}
+          ></input>
+        </p>
+        <button onClick={this.updateSalary}>Update</button>
+      </div>
+    );
+  }
+}
+
+const element = (
+  <Employee Id="007" firstName="James" lastName="Bond" age="20"></Employee>
+);
 
 root.render(element);
