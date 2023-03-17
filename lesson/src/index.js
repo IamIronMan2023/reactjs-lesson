@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-// import App from "./App";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 
 //---------------Elements
 // const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -335,99 +335,102 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 // }
 // const element = <AddNumberComponent></AddNumberComponent>;
 
-class Employee extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { monthlySalary: 0 };
-  }
+//---------------Component interaction using callback
+// class Employee extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { monthlySalary: 0 };
+//   }
 
-  getUpdatedSalary = (salary) => {
-    this.setState({ monthlySalary: salary });
-  };
+//   getUpdatedSalary = (salary) => {
+//     this.setState({ monthlySalary: salary });
+//   };
 
-  render() {
-    return (
-      <div>
-        <h2>Employee Profile</h2>
-        <p>
-          <label>
-            Employee ID: <b>{this.props.Id}</b>
-          </label>
-        </p>
-        <p>
-          <label>
-            Employee First Name: <b>{this.props.firstName}</b>
-          </label>
-        </p>
-        <p>
-          <label>
-            Employee Last Name: <b>{this.props.lastName}</b>
-          </label>
-        </p>
-        <p>
-          <label>
-            Employee Age: <b>{this.props.age}</b>
-          </label>
-        </p>
-        <p>
-          <label>
-            Monthly Salary: <b>{this.state.monthlySalary.toFixed(2)}</b>
-          </label>
-        </p>
-        <Salary onMonthlySalaryChanged={this.getUpdatedSalary}></Salary>
-      </div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div>
+//         <h2>Employee Profile</h2>
+//         <p>
+//           <label>
+//             Employee ID: <b>{this.props.Id}</b>
+//           </label>
+//         </p>
+//         <p>
+//           <label>
+//             Employee First Name: <b>{this.props.firstName}</b>
+//           </label>
+//         </p>
+//         <p>
+//           <label>
+//             Employee Last Name: <b>{this.props.lastName}</b>
+//           </label>
+//         </p>
+//         <p>
+//           <label>
+//             Employee Age: <b>{this.props.age}</b>
+//           </label>
+//         </p>
+//         <p>
+//           <label>
+//             Monthly Salary: <b>{this.state.monthlySalary.toFixed(2)}</b>
+//           </label>
+//         </p>
+//         <Salary onMonthlySalaryChanged={this.getUpdatedSalary}></Salary>
+//       </div>
+//     );
+//   }
+// }
 
-class Salary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { dailyRate: 0, noOfDays: 30 };
-  }
+// class Salary extends React.Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = { dailyRate: 0, noOfDays: 30 };
+//   }
 
-  onInputChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
+//   onInputChange = (event) => {
+//     this.setState({
+//       [event.target.name]: event.target.value,
+//     });
+//   };
 
-  updateSalary = () => {
-    let salary =
-      parseFloat(this.state.dailyRate) * parseFloat(this.state.noOfDays);
-    this.props.onMonthlySalaryChanged(salary);
-  };
+//   updateSalary = () => {
+//     let salary =
+//       parseFloat(this.state.dailyRate) * parseFloat(this.state.noOfDays);
+//     this.props.onMonthlySalaryChanged(salary);
+//   };
 
-  render() {
-    return (
-      <div>
-        <h2>Salary Details</h2>
-        <p>
-          <label>Daily Rate:</label>
-          <input
-            type="number"
-            name="dailyRate"
-            onChange={this.onInputChange}
-            value={this.state.dailyRate}
-          ></input>
-        </p>
-        <p>
-          <label>No. of Days in month:</label>
-          <input
-            type="number"
-            name="noOfDays"
-            onChange={this.onInputChange}
-            value={this.state.noOfDays}
-          ></input>
-        </p>
-        <button onClick={this.updateSalary}>Update</button>
-      </div>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <div>
+//         <h2>Salary Details</h2>
+//         <p>
+//           <label>Daily Rate:</label>
+//           <input
+//             type="number"
+//             name="dailyRate"
+//             onChange={this.onInputChange}
+//             value={this.state.dailyRate}
+//           ></input>
+//         </p>
+//         <p>
+//           <label>No. of Days in month:</label>
+//           <input
+//             type="number"
+//             name="noOfDays"
+//             onChange={this.onInputChange}
+//             value={this.state.noOfDays}
+//           ></input>
+//         </p>
+//         <button onClick={this.updateSalary}>Update</button>
+//       </div>
+//     );
+//   }
+// }
 
-const element = (
-  <Employee Id="007" firstName="James" lastName="Bond" age="20"></Employee>
-);
+// const element = (
+//   <Employee Id="007" firstName="James" lastName="Bond" age="20"></Employee>
+// );
 
-root.render(element);
+// root.render(element);
+
+//---------------Component interaction using context
