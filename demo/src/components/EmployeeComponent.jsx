@@ -1,37 +1,29 @@
-import React, {Component} from "react";
+import React, {useContext} from "react";
 import SalaryContext from "./SalaryContext";
 
-class Employee extends Component{
-    static contextType = SalaryContext;
+const Employee = (props) => {
+    const {salary} = useContext(SalaryContext);
 
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        return (
-            <div>
-                <h2>Employee Profile</h2>
-                <p>
-                    <label>Employee Id <b>{this.props.Id}</b></label>
-                </p>
-                <p>
-                    <label>Employee First Name <b>{this.props.firstName}</b></label>
-                </p>
-                <p>
-                    <label>Employee Last Name <b>{this.props.lastName}</b></label>
-                </p>
-                <p>
-                    <label>Employee Age <b>{this.props.age}</b></label>
-                </p>
-                <p>
-                    <label>Salary is : <b>{this.context.salary}</b></label>
-                </p>
-            </div>
-
-        );
-    }
-
+    return (
+        <div>
+            <h2>Employee Profile</h2>
+            <p>
+                <label>Employee Id <b>{props.Id}</b></label>
+            </p>
+            <p>
+                <label>Employee First Name <b>{props.firstName}</b></label>
+            </p>
+            <p>
+                <label>Employee Last Name <b>{props.lastName}</b></label>
+            </p>
+            <p>
+                <label>Employee Age <b>{props.age}</b></label>
+            </p>
+            <p>
+                <label>Salary is : <b>{salary}</b></label>
+            </p>
+        </div>
+    );
 }
 
 export default Employee;

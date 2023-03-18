@@ -1,45 +1,35 @@
-import React, {Component} from "react";
+import React, {useState, useContext} from "react";
 import SalaryContext from "./SalaryContext";
 
-export default class SalaryComponent extends Component{
-    static contextType = SalaryContext;
+const SalaryComponent = () => {
+    const [data, setData] = useState({
+        dailyRate: 0,
+        noOfDays: 30
+    });
 
-    constructor(props){
-        super(props);
-        this.state = {dailyRate: 0, noOfDays: 30}
-    }
+    const {setSalary} = useContext(SalaryContext);
 
-
-    handleChange = (e) =>{
-        // let value = e.target.value;
-        // let name = e.target.name;        
-
-        //code destructuring
+    const handleChange = (e) =>{
         const {name, value} = e.target;
-        this.setState({[name] : value});
+        setData((prev) => {
+            return {...prev, [name]: value}
+        });
     }
 
-    updateSalary = () =>{
-        let salary = parseFloat(this.state.dailyRate) * parseFloat(this.state.noOfDays);
-        this.context.updateSalary(salary);
-    }
+    const updateSalary = () => setSalary(parseFloat(data.dailyRate) * parseFloat(data.noOfDays));
+    return(
+        <div><h2>Salary Detail</h2>
+        <p>
+            <label>Daily Rate </label>
+            <input type="number" name="dailyRate" onChange={handleChange} value={data.dailyRate} ></input>
+        </p>
+        <p>
+            <label>No Of Days </label>
+            <input type="number" name="noOfDays" onChange={handleChange} value={data.noOfDays} ></input>
+        </p>
+        <button onClick={updateSalary}> Update </button>
 
-    render(){
-        return(
-
-            <div><h2>Salary Detail</h2>
-            <p>
-                <label>Daily Rate </label>
-                <input type="number" name="dailyRate" onChange={this.handleChange} value={this.state.dailyRate} ></input>
-            </p>
-            <p>
-                <label>No Of Days </label>
-                <input type="number" name="noOfDays" onChange={this.handleChange} value={this.state.noOfDays} ></input>
-            </p>
-            <button onClick={this.updateSalary}> Update </button>
-
-            </div>
-        );        
-    }
-
+        </div>
+    );
 }
+export default SalaryComponent;
