@@ -15,7 +15,7 @@ import React, { useState, createContext } from "react";
 const AppContext = createContext();
 export class AppContextProvider extends React.Component {
   state = {
-    monthlySalary: 1000,
+    monthlySalary: 0,
   };
 
   changeSalary = (salary) => {
