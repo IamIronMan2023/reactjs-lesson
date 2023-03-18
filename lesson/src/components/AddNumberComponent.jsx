@@ -22,7 +22,7 @@ const AddNumberComponent = ()  => {
   const onCalculateSum = () => {
     let value = parseFloat(data.firstNumber) + parseFloat(data.secondNumber);
     setData((prev) => {
-      return {...prev, ["sum"]: value}
+      return {...prev, sum: value}
     })
   };
 
