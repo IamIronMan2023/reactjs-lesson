@@ -3,19 +3,24 @@ import "./App.css";
 import Employee from "./components/EmployeeComponent";
 import SalaryComponent from "./components/SalaryComponent";
 import { SalaryContextProvider } from "./components/SalaryContext";
+import AddNumberComponent from "./components/AddNumberComponents";
 
 function App() {
   return (
+    // <div>
+    //   <SalaryContextProvider>
+    //     <Employee
+    //       Id="007"
+    //       firstName="James"
+    //       lastName="Bond"
+    //       age="20"
+    //     ></Employee>
+    //     <SalaryComponent />
+    //   </SalaryContextProvider>
+    // </div>
+
     <div>
-      <SalaryContextProvider>
-        <Employee
-          Id="007"
-          firstName="James"
-          lastName="Bond"
-          age="20"
-        ></Employee>
-        <SalaryComponent />
-      </SalaryContextProvider>
+      <AddNumberComponent />
     </div>
   );
 }
