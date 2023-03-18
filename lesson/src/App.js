@@ -3,6 +3,7 @@ import "./App.css";
 import { AppContextProvider } from "./components/AppContext";
 import EmployeeContext from "./components/EmployeeContext";
 import SalaryContext from "./components/SalaryContext";
+// import AddNumberComponent from "./components/AddNumberComponent";
 
 //import EmployeeCallBack from "./components/EmployeeCallBack";
 
@@ -21,6 +22,8 @@ function App() {
       ></EmployeeContext>
       <SalaryContext />
     </AppContextProvider>
+
+    // <AddNumberComponent />
   );
 }
 
