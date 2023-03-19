@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
+import ClickCounterComponent from "./components/ClickCounterComponent";
 // import { AppContextProvider } from "./components/AppContext";
 // import EmployeeContextComponent from "./components/EmployeeContextComponent";
 // import SalaryContextComponent from "./components/SalaryContextComponent";
 // import AddNumberComponent from "./components/AddNumberComponent";
 //import EmployeeCallBack from "./components/EmployeeCallBack";
-import CharacterCounter from "./components/CharacterCounterComponent";
+// import CharacterCounter from "./components/CharacterCounterComponent";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
     //   <SalaryContextComponent />
     // </AppContextProvider>
     //<AddNumberComponent />
-    <CharacterCounter />
+    // <CharacterCounter />
+    <ClickCounterComponent />
   );
 }
 
