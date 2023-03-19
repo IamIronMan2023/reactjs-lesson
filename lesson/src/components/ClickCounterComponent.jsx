@@ -15,14 +15,13 @@ const ClickCounterComponent = () => {
   //     console.log("useEffect mount");
   //   }, []);
 
-  //   useEffect(() => {
-  //     console.log("useEffect called every button 1 Click Count changed");
+  useEffect(() => {
+    console.log("useEffect called every button 1 Click Count changed");
+  }, [button1ClickCount]);
 
-  //   }, [button1ClickCount]);
-
-  //   useEffect(() => {
-  //     console.log("useEffect called every button 2 Click Count changed");
-  //   }, [button2ClickCount]);
+  useEffect(() => {
+    console.log("useEffect called every button 2 Click Count changed");
+  }, [button2ClickCount]);
 
   //   useEffect(() => {
   //     console.log("useEffect called button 1 and 2 Click Count changed");
@@ -32,18 +31,29 @@ const ClickCounterComponent = () => {
   //     };
   //   }, [button1ClickCount, button2ClickCount]);
 
-  useEffect(() => {
-    console.log("useEffect with setinterval");
+  //   useEffect(() => {
+  //     console.log("useEffect with setinterval");
 
-    const interval = setInterval(() => {
-      setIntervalCount((prev) => prev + 1);
-    }, 1000);
+  //     const interval = setInterval(() => {
+  //       setIntervalCount((prev) => prev + 1);
+  //     }, 1000);
 
-    return () => {
-      console.log("unmount");
-      clearInterval(interval);
-    };
-  }, []);
+  //     return () => {
+  //       console.log("unmount");
+  //       clearInterval(interval);
+  //     };
+  //   }, []);
+
+  //Referential equality
+  // const person = { firstName: "Juan", lastName: "Dela Cruz" };
+
+  // useEffect(() => {
+  //   console.log("useEffect of person");
+
+  //   return () => {
+  //     console.log("unmount of person");
+  //   };
+  // }, [person]);
 
   return (
     <div>
