@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 // import { AppContextProvider } from "./components/AppContext";
-// import EmployeeContext from "./components/EmployeeContext";
-// import SalaryContext from "./components/SalaryContext";
+// import EmployeeContextComponent from "./components/EmployeeContextComponent";
+// import SalaryContextComponent from "./components/SalaryContextComponent";
 // import AddNumberComponent from "./components/AddNumberComponent";
 //import EmployeeCallBack from "./components/EmployeeCallBack";
 import CharacterCounter from "./components/CharacterCounterComponent";
@@ -14,13 +14,13 @@ function App() {
     // </div>
 
     // <AppContextProvider>
-    //   <EmployeeContext
+    //   <EmployeeContextComponent
     //     Id="007"
     //     firstName="James"
     //     lastName="Bond"
     //     age="20"
-    //   ></EmployeeContext>
-    //   <SalaryContext />
+    //   ></EmployeeContextComponent>
+    //   <SalaryContextComponent />
     // </AppContextProvider>
     //<AddNumberComponent />
     <CharacterCounter />
