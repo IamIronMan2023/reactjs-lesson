@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import { AppContextProvider } from "./components/AppContext";
-import EmployeeContext from "./components/EmployeeContext";
-import SalaryContext from "./components/SalaryContext";
-import AddNumberComponent from "./components/AddNumberComponent";
-
+// import { AppContextProvider } from "./components/AppContext";
+// import EmployeeContext from "./components/EmployeeContext";
+// import SalaryContext from "./components/SalaryContext";
+// import AddNumberComponent from "./components/AddNumberComponent";
 //import EmployeeCallBack from "./components/EmployeeCallBack";
+import CharacterCounter from "./components/CharacterCounterComponent";
 
 function App() {
   return (
@@ -22,8 +22,8 @@ function App() {
     //   ></EmployeeContext>
     //   <SalaryContext />
     // </AppContextProvider>
-
-    <AddNumberComponent />
+    //<AddNumberComponent />
+    <CharacterCounter />
   );
 }
 
