@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import ClickCounterComponent from "./components/ClickCounterComponent";
+import EmployeeList from "./pages/Employee/EmployeeList";
+// import ClickCounterComponent from "./components/ClickCounterComponent";
 // import { AppContextProvider } from "./components/AppContext";
 // import EmployeeContextComponent from "./components/EmployeeContextComponent";
 // import SalaryContextComponent from "./components/SalaryContextComponent";
@@ -25,7 +26,8 @@ function App() {
     // </AppContextProvider>
     //<AddNumberComponent />
     // <CharacterCounter />
-    <ClickCounterComponent />
+    // <ClickCounterComponent />
+    <EmployeeList />
   );
 }
 
