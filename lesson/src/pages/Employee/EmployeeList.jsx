@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -27,7 +28,8 @@ const EmployeeList = () => {
 
   return (
     <div>
-      <h1>Employee List</h1>
+      <h2>Employee List</h2>
+      <Link to="/employee/create">Add New Employee</Link>
       <table>
         <thead>
           <tr>
@@ -42,7 +44,7 @@ const EmployeeList = () => {
               <td>{employee.full_name}</td>
               <td>{employee.email}</td>
               <td>
-                <a href="/">View</a>
+                <Link to={`/employee/${employee.id}`}>View</Link>
               </td>
             </tr>
           ))}
