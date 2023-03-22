@@ -45,9 +45,6 @@ const EmployeeEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const controller = new AbortController();
-    const csrf_token = document.head
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content");
 
     let url = `http://127.0.0.1:8000/api/employee/update/${id}`;
 
@@ -57,7 +54,6 @@ const EmployeeEdit = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-        "X-CSRF-TOKEN": token,
       },
       body: JSON.stringify({
         first_name: employee.first_name,
@@ -78,11 +74,6 @@ const EmployeeEdit = () => {
     return () => {
       controller.abort();
     };
-  };
-
-  const handleSubmit2 = (e) => {
-    e.preventDefault();
-    console.log(employee);
   };
 
   return (

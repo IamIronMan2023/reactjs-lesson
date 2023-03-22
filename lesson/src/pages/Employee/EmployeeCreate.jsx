@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeCreate = () => {
   const [employee, setEmployee] = useState({
@@ -6,12 +7,88 @@ const EmployeeCreate = () => {
     lastName: "",
     age: 0,
     email: "",
-    gender: "",
+    id: 0,
   });
+
+  const navigate = useNavigate();
+
+  const handleChanged = (e) => {
+    setEmployee((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const controller = new AbortController();
+    let url = `http://127.0.0.1:8000/api/employee/store`;
+
+    const requestOptions = {
+      signal: controller.signal,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: employee.first_name,
+        last_name: employee.last_name,
+        age: employee.age,
+        email: employee.email,
+      }),
+    };
+
+    let id;
+    await fetch(url, requestOptions)
+      .then((response) => response.json())
+      .then((data) => (id = data.id));
+
+    navigate(`/employee/${id}`);
+    return () => {
+      controller.abort();
+    };
+  };
 
   return (
     <div>
-      <h1>Create New Employee</h1>
+      <h1>Employee Edit</h1>
+      <form onSubmit={handleSubmit}>
+        <p>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            required="required"
+            onChange={handleChanged}
+          />
+        </p>
+        <p>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="last_name"
+            required="required"
+            onChange={handleChanged}
+          />
+        </p>
+        <p>
+          <label>Age</label>
+          <input
+            type="number"
+            name="age"
+            required="required"
+            onChange={handleChanged}
+          />
+        </p>
+        <p>
+          <label>Email Address</label>
+          <input
+            type="email"
+            name="email"
+            required="required"
+            onChange={handleChanged}
+          />
+        </p>
+
+        <input type="submit" value="Save" />
+      </form>
     </div>
   );
 };

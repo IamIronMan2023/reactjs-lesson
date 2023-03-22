@@ -29,7 +29,7 @@ const EmployeeList = () => {
   return (
     <div>
       <h2>Employee List</h2>
-      <Link to="/employee/create">Add New Employee</Link>
+      <Link to="/employee/new">Add New Employee</Link>
       <table>
         <thead>
           <tr>

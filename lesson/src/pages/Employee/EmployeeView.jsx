@@ -47,6 +47,9 @@ const EmployeeView = () => {
         <Link to={`/employee/edit/${employee.id}`}> Edit </Link>
       </p>
       <p>
+        <Link to="/employee/new"> Add </Link>
+      </p>
+      <p>
         <Link to="/"> Employee List </Link>
       </p>
     </div>

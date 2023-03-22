@@ -18,9 +18,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<EmployeeList />}></Route>
-      <Route path="/employee/:id" element={<EmployeeView />}></Route>
-      <Route path="/employee/edit/:id" element={<EmployeeEdit />}></Route>
-      <Route path="/employee/new" element={<EmployeeCreate />}></Route>
+      <Route path="/employee">
+        <Route path=":id" element={<EmployeeView />}></Route>
+        <Route path="edit/:id" element={<EmployeeEdit />}></Route>
+        <Route path="new" element={<EmployeeCreate />}></Route>
+      </Route>
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
 
