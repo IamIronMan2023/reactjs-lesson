@@ -1,30 +1,16 @@
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import ClickCounterComponent from "./components/ClickCounterComponent";
-//import CountCharacter from "./components/CharacterCounterComponent";
-// import Employee from "./components/EmployeeComponent";
-// import SalaryComponent from "./components/SalaryComponent";
-// import { SalaryContextProvider } from "./components/SalaryContext";
-//import AddNumberComponent from "./components/AddNumberComponents";
+import NotFound from "./components/NotFound";
+import EmployeeList from "./pages/Employee/EmployeeList";
+import EmployeeView from "./pages/Employee/EmployeeView";
 
 function App() {
   return (
-    // <div>
-    //   <SalaryContextProvider>
-    //     <Employee
-    //       Id="007"
-    //       firstName="James"
-    //       lastName="Bond"
-    //       age="20"
-    //     ></Employee>
-    //     <SalaryComponent />
-    //   </SalaryContextProvider>
-    // </div>
-
-    // <div>
-    //   <AddNumberComponent />
-    // </div>
-
-    <ClickCounterComponent />
+    <Routes>
+      <Route path="/" element={<EmployeeList />}></Route>
+      <Route path="/employee/:id" element={<EmployeeView />}></Route>
+      <Route path="*" element={<NotFound />}></Route>
+    </Routes>
   );
 }
 
