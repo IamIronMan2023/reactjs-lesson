@@ -44,12 +44,9 @@ const EmployeeEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const controller = new AbortController();
-
     let url = `http://127.0.0.1:8000/api/employee/update/${id}`;
 
     const requestOptions = {
-      signal: controller.signal,
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -66,14 +63,11 @@ const EmployeeEdit = () => {
 
     fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        setEmployee(data);
+        navigate(`/employee/${employee.id}`);
+      })
       .catch((error) => console.log(error));
-
-    navigate(`/employee/${employee.id}`);
-
-    return () => {
-      controller.abort();
-    };
   };
 
   return (

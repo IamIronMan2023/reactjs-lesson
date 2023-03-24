@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 const EmployeeView = () => {
   const { id } = useParams();
@@ -10,10 +10,12 @@ const EmployeeView = () => {
     email: "",
     gender: "",
   });
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const token = "5|rIpAi1D9s0NEF0H2G30Eg8jwCpQE92ZYE2Jb7pLu";
 
   useEffect(() => {
     const controller = new AbortController();
-    let token = "5|rIpAi1D9s0NEF0H2G30Eg8jwCpQE92ZYE2Jb7pLu";
     let url = `http://127.0.0.1:8000/api/employee/show/${id}`;
 
     const requestOptions = {
@@ -25,34 +27,67 @@ const EmployeeView = () => {
       },
     };
 
+    setLoading(true);
     fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((json) => setEmployee(json));
+      .then((json) => {
+        setEmployee(json);
+        setLoading(false);
+      });
 
     return () => {
       controller.abort();
     };
   }, [id]);
 
-  return (
-    <div>
-      <h1>Employee</h1>
-      <h3>First Name : {employee.first_name}</h3>
-      <h3>Last Name: {employee.last_name}</h3>
-      <h3>Age: {employee.age}</h3>
-      <h3>Email: {employee.email}</h3>
-      <h3>Gender: {employee.gender}</h3>
+  const handleDelete = (e) => {
+    if (window.confirm("Do you really want to do this?")) {
+      let url = `http://127.0.0.1:8000/api/employee/delete/${id}`;
 
-      <p>
-        <Link to={`/employee/edit/${employee.id}`}> Edit </Link>
-      </p>
-      <p>
-        <Link to="/employee/new"> Add </Link>
-      </p>
-      <p>
-        <Link to="/"> Employee List </Link>
-      </p>
-    </div>
+      const requestOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      fetch(url, requestOptions)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+
+  return (
+    <>
+      <h1>Employee</h1>
+      {loading ? (
+        <h3>Loading...</h3>
+      ) : (
+        <>
+          <h3>First Name : {employee.first_name}</h3>
+          <h3>Last Name: {employee.last_name}</h3>
+          <h3>Age: {employee.age}</h3>
+          <h3>Email: {employee.email}</h3>
+          <h3>Gender: {employee.gender}</h3>
+
+          <p>
+            <Link to={`/employee/edit/${employee.id}`}> Edit </Link>
+          </p>
+          <p>
+            <Link to="/employee/new"> Add </Link>
+          </p>
+          <p>
+            <Link onClick={handleDelete}> Delete </Link>
+          </p>
+          <p>
+            <Link to="/"> Employee List </Link>
+          </p>
+        </>
+      )}
+    </>
   );
 };
 

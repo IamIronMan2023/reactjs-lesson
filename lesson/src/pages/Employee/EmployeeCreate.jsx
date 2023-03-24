@@ -16,7 +16,7 @@ const EmployeeCreate = () => {
     setEmployee((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const controller = new AbortController();
     let url = `http://127.0.0.1:8000/api/employee/store`;
@@ -35,12 +35,12 @@ const EmployeeCreate = () => {
       }),
     };
 
-    let id;
-    await fetch(url, requestOptions)
+    fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((data) => (id = data.id));
+      .then((data) => {
+        navigate(`/employee/${data.id}`);
+      });
 
-    navigate(`/employee/${id}`);
     return () => {
       controller.abort();
     };
