@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -19,9 +20,13 @@ const EmployeeList = () => {
       },
     };
 
+    setLoading(true);
     fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((json) => setEmployees(json));
+      .then((json) => {
+        setEmployees(json);
+        setLoading(false);
+      });
 
     return () => {
       controller.abort();
@@ -31,26 +36,32 @@ const EmployeeList = () => {
   return (
     <>
       <h2>Employee List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map((e) => (
-            <tr key={e.id}>
-              <td>{e.full_name}</td>
-              <td>{e.email}</td>
-              <td>
-                <Link to={`/employee/${e.id}`}>View</Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {loading ? (
+        <h3>Loading..</h3>
+      ) : (
+        <>
+          <table>
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employees.map((e) => (
+                <tr key={e.id}>
+                  <td>{e.full_name}</td>
+                  <td>{e.email}</td>
+                  <td>
+                    <Link to={`/employee/${e.id}`}>View</Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
     </>
   );
 };

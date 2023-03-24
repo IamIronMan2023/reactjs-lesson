@@ -45,6 +45,9 @@ const EmployeeView = () => {
       <p>
         <Link to="/">Employee List</Link>
       </p>
+      <p>
+        <Link to={`/employee/edit/${employee.id}`}>Edit</Link>
+      </p>
     </>
   );
 };
