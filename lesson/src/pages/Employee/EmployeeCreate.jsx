@@ -18,11 +18,9 @@ const EmployeeCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const controller = new AbortController();
     let url = `http://127.0.0.1:8000/api/employee/store`;
 
     const requestOptions = {
-      signal: controller.signal,
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,10 +38,6 @@ const EmployeeCreate = () => {
       .then((data) => {
         navigate(`/employee/${data.id}`);
       });
-
-    return () => {
-      controller.abort();
-    };
   };
 
   return (
