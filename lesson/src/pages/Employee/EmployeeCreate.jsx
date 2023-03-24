@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EmployeeCreate = () => {
@@ -7,14 +7,14 @@ const EmployeeCreate = () => {
     lastName: "",
     age: 0,
     email: "",
-    id: 0,
   });
 
-  const navigate = useNavigate();
+  const firstNameRef = useRef("");
+  const lastNameRef = useRef("");
+  const ageRef = useRef(0);
+  const emailRef = useRef("");
 
-  const handleChanged = (e) => {
-    setEmployee((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,10 +26,10 @@ const EmployeeCreate = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        first_name: employee.first_name,
-        last_name: employee.last_name,
-        age: employee.age,
-        email: employee.email,
+        first_name: firstNameRef.current.value,
+        last_name: lastNameRef.current.value,
+        age: ageRef.current.value,
+        email: emailRef.current.value,
       }),
     };
 
@@ -46,39 +46,19 @@ const EmployeeCreate = () => {
       <form onSubmit={handleSubmit}>
         <p>
           <label>First Name</label>
-          <input
-            type="text"
-            name="first_name"
-            required="required"
-            onChange={handleChanged}
-          />
+          <input type="text" ref={firstNameRef} required="required" />
         </p>
         <p>
           <label>Last Name</label>
-          <input
-            type="text"
-            name="last_name"
-            required="required"
-            onChange={handleChanged}
-          />
+          <input type="text" ref={lastNameRef} required="required" />
         </p>
         <p>
           <label>Age</label>
-          <input
-            type="number"
-            name="age"
-            required="required"
-            onChange={handleChanged}
-          />
+          <input type="number" ref={ageRef} required="required" />
         </p>
         <p>
           <label>Email Address</label>
-          <input
-            type="email"
-            name="email"
-            required="required"
-            onChange={handleChanged}
-          />
+          <input type="email" ref={emailRef} required="required" />
         </p>
 
         <input type="submit" value="Save" />
