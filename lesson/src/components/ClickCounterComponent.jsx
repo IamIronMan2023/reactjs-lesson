@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 
 const ClickCounterComponent = () => {
+  const [intervalCount, setIntervalCount] = useState(0);
   const [button1ClickCount, setButton1ClickCount] = useState(0);
   const [button2ClickCount, setButton2ClickCount] = useState(0);
-  const [intervalCount, setIntervalCount] = useState(0);
+  const calculateNumber = useMemo(() => {
+    slowCalculation(button1ClickCount);
+  }, [button1ClickCount]);
+
+  // const calculateNumber = slowCalculation(button1ClickCount);
 
   console.log("Render called");
 
@@ -55,6 +60,12 @@ const ClickCounterComponent = () => {
   //   };
   // }, [person]);
 
+  function slowCalculation(number) {
+    console.log("slow calculation");
+    for (let i = 0; i <= 1000000000; i++) {}
+    return number * 2;
+  }
+
   return (
     <div>
       <p>
@@ -71,6 +82,9 @@ const ClickCounterComponent = () => {
       </p>
       <p>
         <label>Interval: {intervalCount}</label>
+      </p>
+      <p>
+        <label>Calculate Number Result: {calculateNumber}</label>
       </p>
     </div>
   );
