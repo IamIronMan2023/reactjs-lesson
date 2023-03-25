@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -9,9 +9,11 @@ const EmployeeEdit = () => {
     age: 0,
     email: "",
   });
+  const navigate = useNavigate();
+
+  const token = "5|rIpAi1D9s0NEF0H2G30Eg8jwCpQE92ZYE2Jb7pLu";
 
   useEffect(() => {
-    let token = "5|rIpAi1D9s0NEF0H2G30Eg8jwCpQE92ZYE2Jb7pLu";
     let url = `http://127.0.0.1:8000/api/employee/show/${id}`;
 
     const controller = new AbortController();
@@ -40,7 +42,26 @@ const EmployeeEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //post request
+    let url = `http://127.0.0.1:8000/api/employee/update/${id}`;
+
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        first_name: employee.first_name,
+        last_name: employee.last_name,
+        age: employee.age,
+        email: employee.email,
+      }),
+    };
+
+    fetch(url, requestOptions)
+      .then((response) => response.json())
+      .then((data) => navigate(`/employee/${data.id}`))
+      .catch((error) => console.log(error));
   };
 
   return (
