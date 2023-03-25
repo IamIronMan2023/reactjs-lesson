@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -59,6 +61,7 @@ const EmployeeList = () => {
               ))}
             </tbody>
           </table>
+          <span>{token}</span>
         </>
       )}
     </>
