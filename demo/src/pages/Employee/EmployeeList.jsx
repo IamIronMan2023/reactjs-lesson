@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
 
   useEffect(() => {
     const controller = new AbortController();
 
     let url = "http://127.0.0.1:8000/api/employees";
-    let token = "7|kmB4gG7oifo0TzG50bicJC27VXOcXh0ZRtXdL1no";
 
     const requestOptions = {
       signal: controller.signal,
@@ -40,6 +41,7 @@ const EmployeeList = () => {
         <h3>Loading..</h3>
       ) : (
         <>
+          <Link to="/employee/new">Add New Employee</Link>
           <table>
             <thead>
               <tr>

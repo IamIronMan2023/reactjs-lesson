@@ -1,12 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
 export default function Login() {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const [error, setError] = useState("");
-  const { setToken } = useAuth();
+  const { setToken, setIsAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   async function handleLogin(e) {
@@ -29,10 +28,11 @@ export default function Login() {
     const fetchResponse = await fetch(url, requestOptions);
     if (fetchResponse.status === 200) {
       let data = await fetchResponse.json();
+      setIsAuthenticated(true);
       setToken(data.token);
       navigate("/");
     } else {
-      setError("Invalid Credential");
+      alert("Incorrect credential");
     }
   }
 

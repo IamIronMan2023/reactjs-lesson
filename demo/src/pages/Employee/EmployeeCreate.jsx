@@ -1,54 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 
-const EmployeeEdit = () => {
-  const { id } = useParams();
+const EmployeeCreate = () => {
   const [employee, setEmployee] = useState({
-    first_name: "",
-    last_name: "",
+    firstName: "",
+    lastName: "",
     age: 0,
     email: "",
+    id: 0,
   });
 
   const navigate = useNavigate();
   const { token } = useAuth();
 
-  useEffect(() => {
-    const controller = new AbortController();
-    let url = `http://127.0.0.1:8000/api/employee/show/${id}`;
-
-    const requestOptions = {
-      signal: controller.signal,
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    };
-
-    fetch(url, requestOptions)
-      .then((response) => response.json())
-      .then((json) => setEmployee(json));
-
-    return () => {
-      controller.abort();
-    };
-  }, [id]);
-
   const handleChanged = (e) => {
-    const { name, value } = e.target;
-    setEmployee((prev) => {
-      return { ...prev, [name]: value };
-    });
+    setEmployee((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = `http://127.0.0.1:8000/api/employee/update/${id}`;
+    const controller = new AbortController();
+    let url = `http://127.0.0.1:8000/api/employee/store`;
 
     const requestOptions = {
-      method: "PUT",
+      signal: controller.signal,
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -58,17 +35,18 @@ const EmployeeEdit = () => {
         last_name: employee.last_name,
         age: employee.age,
         email: employee.email,
-        gender: employee.gender,
       }),
     };
 
     fetch(url, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setEmployee(data);
-        navigate(`/employee/${employee.id}`);
-      })
-      .catch((error) => console.log(error));
+        navigate(`/employee/${data.id}`);
+      });
+
+    return () => {
+      controller.abort();
+    };
   };
 
   return (
@@ -82,7 +60,6 @@ const EmployeeEdit = () => {
             name="first_name"
             required="required"
             onChange={handleChanged}
-            value={employee.first_name}
           />
         </p>
         <p>
@@ -92,7 +69,6 @@ const EmployeeEdit = () => {
             name="last_name"
             required="required"
             onChange={handleChanged}
-            value={employee.last_name}
           />
         </p>
         <p>
@@ -102,7 +78,6 @@ const EmployeeEdit = () => {
             name="age"
             required="required"
             onChange={handleChanged}
-            value={employee.age}
           />
         </p>
         <p>
@@ -112,14 +87,13 @@ const EmployeeEdit = () => {
             name="email"
             required="required"
             onChange={handleChanged}
-            value={employee.email}
           />
         </p>
 
-        <input type="submit" value="Update" />
+        <input type="submit" value="Save" />
       </form>
     </div>
   );
 };
 
-export default EmployeeEdit;
+export default EmployeeCreate;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -10,8 +11,7 @@ const EmployeeEdit = () => {
     email: "",
   });
   const navigate = useNavigate();
-
-  const token = "5|rIpAi1D9s0NEF0H2G30Eg8jwCpQE92ZYE2Jb7pLu";
+  const { token } = useAuth();
 
   useEffect(() => {
     let url = `http://127.0.0.1:8000/api/employee/show/${id}`;

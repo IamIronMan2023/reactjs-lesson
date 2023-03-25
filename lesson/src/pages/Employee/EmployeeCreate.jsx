@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const EmployeeCreate = () => {
   const [employee, setEmployee] = useState({
@@ -8,6 +9,7 @@ const EmployeeCreate = () => {
     age: 0,
     email: "",
   });
+  const { token } = useAuth();
 
   const firstNameRef = useRef("");
   const lastNameRef = useRef("");
@@ -24,6 +26,7 @@ const EmployeeCreate = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         first_name: firstNameRef.current.value,

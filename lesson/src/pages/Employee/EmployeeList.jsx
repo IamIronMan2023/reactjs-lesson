@@ -61,7 +61,6 @@ const EmployeeList = () => {
               ))}
             </tbody>
           </table>
-          <span>{token}</span>
         </>
       )}
     </>
