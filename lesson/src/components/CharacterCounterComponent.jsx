@@ -10,18 +10,11 @@ const CharacterCounter = () => {
     setCharacterCount(dataRef.current.value.length);
   };
 
-  //   const handleChanged = (e) => {
-  //     setData((prev) => {
-  //       return { ...prev, [e.target.name]: e.target.value };
-  //     });
-  //   };
-
   return (
     <div>
       <h2>Character Counter</h2>
       <p>
         <label>Enter a text </label>
-        {/* <input type="text" name="textEntered" onChange={handleChanged}></input> */}
         <input type="text" ref={dataRef}></input>
       </p>
       <p>
