@@ -18,10 +18,11 @@ const EmployeeList = () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      'Access-Control-Allow-Origin': true,      
     };
 
     setLoading(true);
-    fetch("http://127.0.0.1:8000/api/employees", requestOptions)
+    fetch("http://127.0.0.1:5000/api/employees", requestOptions)
       .then((response) => response.json())
       .then((json) => {
         setEmployees(json);
@@ -44,18 +45,20 @@ const EmployeeList = () => {
           <table>
             <thead>
               <tr>
-                <th>Full Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>                
                 <th>Email</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {employees.map((employee) => (
-                <tr key={employee.id}>
-                  <td>{employee.full_name}</td>
+                <tr key={employee._id}>
+                  <td>{employee.first_name}</td>
+                  <td>{employee.last_name}</td>                                    
                   <td>{employee.email}</td>
                   <td>
-                    <Link to={`/employee/${employee.id}`}>View</Link>
+                    <Link to={`/employee/${employee._id}`}>View</Link>
                   </td>
                 </tr>
               ))}

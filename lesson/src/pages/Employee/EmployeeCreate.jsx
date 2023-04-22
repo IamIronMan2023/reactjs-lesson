@@ -20,7 +20,7 @@ const EmployeeCreate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = `http://127.0.0.1:8000/api/employee/store`;
+    let url = `http://127.0.0.1:5000/api/employees`;
 
     const requestOptions = {
       method: "POST",
@@ -45,7 +45,7 @@ const EmployeeCreate = () => {
 
   return (
     <div>
-      <h1>Employee Edit</h1>
+      <h1>Add new employee</h1>
       <form onSubmit={handleSubmit}>
         <p>
           <label>First Name</label>
