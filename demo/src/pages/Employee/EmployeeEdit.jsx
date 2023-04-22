@@ -14,7 +14,7 @@ const EmployeeEdit = () => {
   const { token } = useAuth();
 
   useEffect(() => {
-    let url = `http://127.0.0.1:8000/api/employee/show/${id}`;
+    let url = `http://127.0.0.1:5000/api/employees/${id}`;
 
     const controller = new AbortController();
 
@@ -42,7 +42,7 @@ const EmployeeEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = `http://127.0.0.1:8000/api/employee/update/${id}`;
+    let url = `http://127.0.0.1:5000/api/employees`;
 
     const requestOptions = {
       method: "PUT",
@@ -55,12 +55,13 @@ const EmployeeEdit = () => {
         last_name: employee.last_name,
         age: employee.age,
         email: employee.email,
+        id: id
       }),
     };
 
     fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((data) => navigate(`/employee/${data.id}`))
+      .then((data) => navigate(`/employee/${id}`))
       .catch((error) => console.log(error));
   };
 

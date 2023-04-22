@@ -16,7 +16,7 @@ const EmployeeView = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let url = `http://127.0.0.1:8000/api/employee/show/${id}`;
+    let url = `http://127.0.0.1:5000/api/employees/${id}`;
 
     const controller = new AbortController();
 
@@ -45,7 +45,7 @@ const EmployeeView = () => {
 
   const handleDelete = (e) => {
     if (window.confirm("Are you really sure you want to delete this record?")) {
-      let url = `http://127.0.0.1:8000/api/employee/delete/${id}`;
+      let url = `http://127.0.0.1:5000/api/employees`;
 
       const requestOptions = {
         method: "DELETE",
@@ -53,6 +53,9 @@ const EmployeeView = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({
+          id: id
+        }), 
       };
 
       fetch(url, requestOptions)
@@ -80,7 +83,7 @@ const EmployeeView = () => {
             <Link to="/">Employee List</Link>
           </p>
           <p>
-            <Link to={`/employee/edit/${employee.id}`}>Edit</Link>
+            <Link to={`/employee/edit/${employee._id}`}>Edit</Link>
           </p>
           <p>
             <Link onClick={handleDelete}>Delete</Link>

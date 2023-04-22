@@ -10,7 +10,7 @@ const EmployeeList = () => {
   useEffect(() => {
     const controller = new AbortController();
 
-    let url = "http://127.0.0.1:8000/api/employees";
+    let url = "http://127.0.0.1:5000/api/employees";
 
     const requestOptions = {
       signal: controller.signal,
@@ -45,7 +45,8 @@ const EmployeeList = () => {
           <table>
             <thead>
               <tr>
-                <th>Full Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>                
                 <th>Email</th>
                 <th>Action</th>
               </tr>
@@ -53,10 +54,11 @@ const EmployeeList = () => {
             <tbody>
               {employees.map((e) => (
                 <tr key={e.id}>
-                  <td>{e.full_name}</td>
+                  <td>{e.first_name}</td>
+                  <td>{e.last_name}</td>                  
                   <td>{e.email}</td>
                   <td>
-                    <Link to={`/employee/${e.id}`}>View</Link>
+                    <Link to={`/employee/${e._id}`}>View</Link>
                   </td>
                 </tr>
               ))}

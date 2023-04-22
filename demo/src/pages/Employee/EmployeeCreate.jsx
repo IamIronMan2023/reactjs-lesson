@@ -21,7 +21,7 @@ const EmployeeCreate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const controller = new AbortController();
-    let url = `http://127.0.0.1:8000/api/employee/store`;
+    let url = `http://127.0.0.1:5000/api/employees`;
 
     const requestOptions = {
       signal: controller.signal,
