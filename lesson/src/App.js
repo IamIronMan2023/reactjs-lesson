@@ -22,14 +22,14 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route element={<SecureRoute />}>
-            <Route element={<EmployeeList />} path="/" exact />
-            <Route path="/employee">
-              <Route path=":id" element={<EmployeeView />}></Route>
-              <Route path="edit/:id" element={<EmployeeEdit />}></Route>
-              <Route path="new" element={<EmployeeCreate />}></Route>
-            </Route>
+          {/* <Route element={<SecureRoute />}> */}
+          <Route element={<EmployeeList />} path="/" exact />
+          <Route path="/employee">
+            <Route path=":id" element={<EmployeeView />}></Route>
+            <Route path="edit/:id" element={<EmployeeEdit />}></Route>
+            <Route path="new" element={<EmployeeCreate />}></Route>
           </Route>
+          {/* </Route> */}
 
           <Route path="/login" element={<Login />}></Route>
           <Route
