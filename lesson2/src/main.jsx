@@ -2,14 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-// )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// const root = ReactDOM.createRoot(document.getElementById('root'));
 
 // root.render(
 //   <React.StrictMode>
@@ -122,7 +122,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(classElement);
 
 //---------------function Component
-// function DisplayEmployee(employee) {
+// const Employee = (employee) => {
 //   return (
 //     <>
 //       <h2>Employee Information</h2>      
@@ -177,14 +177,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // };
 
 // const functionElement = (
-//   <DisplayEmployee
+//   <Employee
 //     id="007"
 //     firstName="James"
 //     lastName="Bond"
 //     age="20"
 //     departmentId="1"
 //     departmentName="CIA"
-//   ></DisplayEmployee>
+//   ></Employee>
 // );
 
 // root.render(functionElement);
