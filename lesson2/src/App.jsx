@@ -1,6 +1,7 @@
 import ClickCountComponent from "./components/ClickCountComponent";
 import Employee from "./components/EmployeeFunctionComponent";
 import EventComponent from "./components/EventComponent";
+import WelcomeComponent from "./components/WelcomeComponent";
 
 function App() {
   return (
@@ -14,9 +15,11 @@ function App() {
         departmentName="CIA"
       /> */}
 
-      <EventComponent />
+      {/* <EventComponent /> */}
 
       {/* <ClickCountComponent /> */}
+
+      <WelcomeComponent />
     </>
   );
 }
