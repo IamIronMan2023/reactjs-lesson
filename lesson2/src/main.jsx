@@ -1,13 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
-
+  </React.StrictMode>
+);
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -125,7 +124,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // const Employee = (employee) => {
 //   return (
 //     <>
-//       <h2>Employee Information</h2>      
+//       <h2>Employee Information</h2>
 //       <p>
 //         <label>
 //           Employee ID: <b>{employee.id}</b>
@@ -188,4 +187,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 // );
 
 // root.render(functionElement);
-
