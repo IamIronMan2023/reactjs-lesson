@@ -13,7 +13,8 @@ const EmployeeView = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const url = `http://127.0.0.1:8000/api/employees/${id}`;
+    const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
+
     const controller = new AbortController();
     const requestOptions = {
       method: "GET",

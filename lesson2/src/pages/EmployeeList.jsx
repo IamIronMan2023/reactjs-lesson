@@ -6,8 +6,9 @@ const EmployeeList = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController();
+    const url = `${import.meta.env.VITE_API_URL}/employees}`;
 
+    const controller = new AbortController();
     const requestOptions = {
       signal: controller.signal,
       method: "GET",
@@ -18,7 +19,7 @@ const EmployeeList = () => {
     };
 
     setLoading(true);
-    fetch("http://127.0.0.1:8000/api/employees", requestOptions)
+    fetch(url, requestOptions)
       .then((response) => response.json())
       .then((json) => {
         setEmployees(json);
