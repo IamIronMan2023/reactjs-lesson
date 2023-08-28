@@ -6,6 +6,7 @@ import WelcomeComponent from "./components/WelcomeComponent";
 import EmployeeList from "./pages/EmployeeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeView from "./pages/EmployeeView";
+import NotFound from "./components/NotFoundComponent";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/" element={<EmployeeList />}></Route>
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </>
