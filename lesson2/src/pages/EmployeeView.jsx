@@ -51,9 +51,11 @@ const EmployeeView = () => {
           <h3>Age: {employee.age}</h3>
           <h3>Email: {employee.email}</h3>
           <h3>Gender: {employee.gender}</h3>
-
           <p>
             <Link to="/">Employee List</Link>
+          </p>{" "}
+          <p>
+            <Link to={`/employees/edit/${id}`}>Edit</Link>
           </p>
         </>
       )}

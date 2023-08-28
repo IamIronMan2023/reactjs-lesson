@@ -7,6 +7,7 @@ import EmployeeList from "./pages/EmployeeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeView from "./pages/EmployeeView";
 import NotFound from "./components/NotFoundComponent";
+import EmployeeEdit from "./pages/EmployeeEdit";
 import EmployeeCreate from "./pages/EmployeeCreate";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<EmployeeList />}></Route>
           <Route path="/employees/:id" element={<EmployeeView />}></Route>
           <Route path="/employees/create" element={<EmployeeCreate />}></Route>
+          <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>

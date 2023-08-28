@@ -59,7 +59,7 @@ const EmployeeEdit = () => {
         age: employee.age,
         email: employee.email,
         gender: employee.gender,
-        id: id,        
+        id: id,
       }),
     };
 
