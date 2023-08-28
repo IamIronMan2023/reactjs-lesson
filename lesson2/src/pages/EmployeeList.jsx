@@ -6,16 +6,16 @@ const EmployeeList = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const url = `${import.meta.env.VITE_API_URL}/employees}`;
+    const url = `${import.meta.env.VITE_API_URL}/employees`;
 
     const controller = new AbortController();
+
     const requestOptions = {
       signal: controller.signal,
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
-      "Access-Control-Allow-Origin": true,
     };
 
     setLoading(true);
