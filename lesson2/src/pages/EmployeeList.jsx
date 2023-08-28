@@ -41,6 +41,7 @@ const EmployeeList = () => {
         <h3>Loading...</h3>
       ) : (
         <>
+          <Link to="/employees/create">Add New Employee</Link>
           <table>
             <thead>
               <tr>
