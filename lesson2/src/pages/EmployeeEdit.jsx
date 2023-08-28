@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -78,63 +78,68 @@ const EmployeeEdit = () => {
       {loading ? (
         <h3>Loading...</h3>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <p>
-            <label>First Name</label>
-            <input
-              type="text"
-              name="first_name"
-              required="required"
-              onChange={handleChanged}
-              value={employee.first_name}
-            />
-          </p>
-          <p>
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="last_name"
-              required="required"
-              onChange={handleChanged}
-              value={employee.last_name}
-            />
-          </p>
-          <p>
-            <label>Age</label>
-            <input
-              type="number"
-              name="age"
-              required="required"
-              onChange={handleChanged}
-              value={employee.age}
-            />
-          </p>
-          <p>
-            <label>Email Address</label>
-            <input
-              type="email"
-              name="email"
-              required="required"
-              onChange={handleChanged}
-              value={employee.email}
-            />
-          </p>
-          <p>
-            <label>Gender</label>
-            <select
-              name="gender"
-              value={employee.gender}
-              onChange={handleChanged}
-              required
-              focus
-            >
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-          </p>
+        <>
+          <form onSubmit={handleSubmit}>
+            <p>
+              <label>First Name</label>
+              <input
+                type="text"
+                name="first_name"
+                required="required"
+                onChange={handleChanged}
+                value={employee.first_name}
+              />
+            </p>
+            <p>
+              <label>Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                required="required"
+                onChange={handleChanged}
+                value={employee.last_name}
+              />
+            </p>
+            <p>
+              <label>Age</label>
+              <input
+                type="number"
+                name="age"
+                required="required"
+                onChange={handleChanged}
+                value={employee.age}
+              />
+            </p>
+            <p>
+              <label>Email Address</label>
+              <input
+                type="email"
+                name="email"
+                required="required"
+                onChange={handleChanged}
+                value={employee.email}
+              />
+            </p>
+            <p>
+              <label>Gender</label>
+              <select
+                name="gender"
+                value={employee.gender}
+                onChange={handleChanged}
+                required
+                focus
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </p>
 
-          <input type="submit" value="Update" />
-        </form>
+            <input type="submit" value="Update" />
+          </form>
+          <p>
+            <Link to={`/employees/${id}`}>Back</Link>
+          </p>
+        </>
       )}
     </>
   );
