@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 const EmployeeView = () => {
   const { id } = useParams();
@@ -9,12 +9,11 @@ const EmployeeView = () => {
     age: 0,
     email: "",
   });
-
   const [loading, setLoading] = useState(false);
+  const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
-
     const controller = new AbortController();
     const requestOptions = {
       method: "GET",
@@ -25,7 +24,6 @@ const EmployeeView = () => {
     };
 
     setLoading(true);
-
     fetch(url, requestOptions)
       .then((response) => response.json())
       .then((json) => {
@@ -37,6 +35,26 @@ const EmployeeView = () => {
       controller.abort();
     };
   }, [id]);
+
+  const handleDelete = (e) => {
+    if (window.confirm("Do you really want to do this?")) {
+      const requestOptions = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      };
+
+      fetch(url, requestOptions)
+        .then(() => {
+          navigate("/");
+        })
+        .catch((error) => console.log(error));
+    }
+  };
 
   return (
     <>
@@ -53,9 +71,12 @@ const EmployeeView = () => {
           <h3>Gender: {employee.gender}</h3>
           <p>
             <Link to="/">Employee List</Link>
-          </p>{" "}
+          </p>
           <p>
             <Link to={`/employees/edit/${id}`}>Edit</Link>
+          </p>
+          <p>
+            <Link onClick={handleDelete}>Delete</Link>
           </p>
         </>
       )}
