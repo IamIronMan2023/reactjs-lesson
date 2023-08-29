@@ -9,6 +9,8 @@ import EmployeeView from "./pages/EmployeeView";
 import NotFound from "./components/NotFoundComponent";
 import EmployeeEdit from "./pages/EmployeeEdit";
 import EmployeeCreate from "./pages/EmployeeCreate";
+import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -31,16 +33,24 @@ function App() {
       {/* <UseEffectDemoComponent /> */}
 
       {/* <EmployeeList /> */}
-
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<EmployeeList />}></Route>
-          <Route path="/employees/:id" element={<EmployeeView />}></Route>
-          <Route path="/employees/create" element={<EmployeeCreate />}></Route>
-          <Route path="/employees/edit/:id" element={<EmployeeEdit />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<EmployeeList />}></Route>
+            <Route path="/employees/:id" element={<EmployeeView />}></Route>
+            <Route
+              path="/employees/create"
+              element={<EmployeeCreate />}
+            ></Route>
+            <Route
+              path="/employees/edit/:id"
+              element={<EmployeeEdit />}
+            ></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </>
   );
 }
