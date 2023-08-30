@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { token, setToken, setIsAuthenticated } = useAuth();
 
+  const navigate = useNavigate();
   useEffect(() => {
     const url = `${import.meta.env.VITE_API_URL}/employees`;
 
@@ -15,6 +18,7 @@ const EmployeeList = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
 
@@ -34,14 +38,43 @@ const EmployeeList = () => {
     };
   }, []);
 
+  const handleSignOut = async (e) => {
+    e.preventDefault();
+
+    const url = `${import.meta.env.VITE_API_URL}/logout`;
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const fetchResponse = await fetch(url, requestOptions);
+
+    if (fetchResponse.status === 200) {
+      setIsAuthenticated(false);
+      setToken("");
+      alert("Log out successfully!");
+      navigate("/login");
+    }
+  };
+
   return (
     <>
-      <h2>Employee List</h2>
+      <h2>Employee List {token}</h2>
       {loading ? (
         <h3>Loading...</h3>
       ) : (
         <>
-          <Link to="/employees/create">Add New Employee</Link>
+          <p>
+            <Link to="/employees/create">Add New Employee</Link>
+          </p>
+          <p>
+            {token.length > 0 && <Link onClick={handleSignOut}>Log Out</Link>}
+          </p>
+
           <table>
             <thead>
               <tr>
