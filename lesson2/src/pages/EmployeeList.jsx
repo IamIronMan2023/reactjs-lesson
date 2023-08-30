@@ -63,7 +63,7 @@ const EmployeeList = () => {
 
   return (
     <>
-      <h2>Employee List {token}</h2>
+      <h2>Employee List</h2>
       {loading ? (
         <h3>Loading...</h3>
       ) : (
