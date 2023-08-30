@@ -1,10 +1,10 @@
-import { AuthContextDemo } from "../contexts/AuthContextDemo";
-import { useContext, useState } from "react";
+import { useAuthDemo } from "../contexts/AuthContextDemo";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DemoComponent1 = () => {
   const [text, setText] = useState("");
-  const { message, setMessage } = useContext(AuthContextDemo);
+  const { message, setMessage } = useAuthDemo();
   const navigate = useNavigate();
 
   const handleClick = (e) => {

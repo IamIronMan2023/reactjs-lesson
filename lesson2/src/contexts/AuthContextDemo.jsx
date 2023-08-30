@@ -1,6 +1,10 @@
 import React, { useContext, createContext, useState } from "react";
 
-export const AuthContextDemo = createContext();
+const AuthContextDemo = createContext();
+
+export function useAuthDemo() {
+  return useContext(AuthContextDemo);
+}
 
 export const AuthProviderDemo = ({ children }) => {
   const [message, setMessage] = useState("");
