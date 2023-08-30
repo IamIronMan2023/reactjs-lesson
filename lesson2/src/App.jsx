@@ -12,6 +12,9 @@ import EmployeeCreate from "./pages/EmployeeCreate";
 import { AuthProvider } from "./contexts/AuthContext";
 import Login from "./pages/Login";
 import SecureRoute from "./SecureRoute";
+import { AuthProviderDemo } from "./contexts/AuthContextDemo";
+import DemoComponent1 from "./components/DemoComponent1";
+import DemoComponent2 from "./components/DemoComponent2";
 
 function App() {
   return (
@@ -34,7 +37,7 @@ function App() {
       {/* <UseEffectDemoComponent /> */}
 
       {/* <EmployeeList /> */}
-      <AuthProvider>
+      {/* <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<SecureRoute />}>
@@ -53,7 +56,16 @@ function App() {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
+      </AuthProvider> */}
+
+      <AuthProviderDemo>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/Demo1" element={<DemoComponent1 />}></Route>
+            <Route path="/Demo2" element={<DemoComponent2 />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProviderDemo>
     </>
   );
 }
