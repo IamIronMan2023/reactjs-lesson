@@ -14,6 +14,7 @@ const UseRefComponent = () => {
   };
 
   const handleChangeRef = (e) => {
+    //useRef is similar to document.getElementById();
     // console.log(firstNameRef.current);
     // firstNameRef.current.style.backgroundColor = "blue";
     // firstNameRef.current.style.color = "blue";
