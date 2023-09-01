@@ -39,7 +39,8 @@ function App() {
       {/* <UseEffectDemoComponent /> */}
 
       {/* <EmployeeList /> */}
-      {/* <AuthProvider>
+
+      <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<SecureRoute />}>
@@ -58,7 +59,7 @@ function App() {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
-      </AuthProvider> */}
+      </AuthProvider>
 
       {/* <AuthProviderDemo>
         <BrowserRouter>
@@ -71,7 +72,7 @@ function App() {
 
       {/* <UseRefComponent /> */}
 
-      <UseMemoDemoComponent />
+      {/* <UseMemoDemoComponent /> */}
     </>
   );
 }

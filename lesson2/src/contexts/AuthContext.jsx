@@ -1,4 +1,5 @@
 import React, { useContext, createContext, useState } from "react";
+import useStorage from "../hooks/useStorage";
 
 export const AuthContext = createContext();
 
@@ -7,8 +8,11 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useStorage(
+    "isAuthenticated",
+    false
+  );
+  const [token, setToken] = useStorage("token", null);
 
   const value = {
     setToken,
