@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const UseRefComponent = () => {
+const UseRefDemoComponent = () => {
   console.log("render");
 
   const [message, setMessage] = useState("");
@@ -48,4 +48,4 @@ const UseRefComponent = () => {
   );
 };
 
-export default UseRefComponent;
+export default UseRefDemoComponent;
