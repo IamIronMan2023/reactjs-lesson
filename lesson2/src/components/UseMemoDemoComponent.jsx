@@ -4,16 +4,15 @@ const UseMemoDemoComponent = () => {
   const [number, setNumber] = useState(0);
   const [number2, setNumber2] = useState(0);
 
-  //const value = calculate(number);
+  // const value = calculate(number);
   const value = useMemo(() => {
     return calculate(number);
   }, [number]);
 
   function calculate(num) {
     console.log("calling calculate");
-    for (let i = 0; i <= 10000000000; i++) {
-      return num * 2;
-    }
+    for (let i = 0; i <= 1000000000; i++) {}
+    return num * 2;
   }
 
   return (
