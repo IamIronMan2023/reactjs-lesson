@@ -17,6 +17,7 @@ import DemoComponent1 from "./components/DemoComponent1";
 import DemoComponent2 from "./components/DemoComponent2";
 import UseRefDemoComponent from "./components/UseRefDemoComponent";
 import UseMemoDemoComponent from "./components/UseMemoDemoComponent";
+import UseCallbackDemoComponent from "./components/useCallBackDemoComponent";
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
 
       {/* <EmployeeList /> */}
 
-      <AuthProvider>
+      {/* <AuthProvider>
         <BrowserRouter>
           <Routes>
             <Route element={<SecureRoute />}>
@@ -59,7 +60,7 @@ function App() {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
+      </AuthProvider> */}
 
       {/* <AuthProviderDemo>
         <BrowserRouter>
@@ -73,6 +74,7 @@ function App() {
       {/* <UseRefDemoComponent /> */}
 
       {/* <UseMemoDemoComponent /> */}
+      <UseCallbackDemoComponent />
     </>
   );
 }
