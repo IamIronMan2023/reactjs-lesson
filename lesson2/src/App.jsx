@@ -2,7 +2,7 @@ import ClickCountComponent from "./components/ClickCountComponent";
 import Employee from "./components/EmployeeFunctionComponent";
 import EventComponent from "./components/EventComponent";
 import UseEffectDemoComponent from "./components/UseEffectDemoComponent";
-import WelcomeComponent from "./components/WelcomeComponent";
+import UseStateDemoComponent from "./components/UseStateDemoComponent";
 import EmployeeList from "./pages/EmployeeList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EmployeeView from "./pages/EmployeeView";
@@ -39,7 +39,7 @@ function App() {
 
       {/* <ClickCountComponent /> */}
 
-      {/* <WelcomeComponent /> */}
+      {/* <UseStateDemoComponent /> */}
 
       {/* <UseEffectDemoComponent /> */}
 

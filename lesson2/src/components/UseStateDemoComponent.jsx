@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const WelcomeComponent = () => {
+const UseStateDemoComponent = () => {
   const [message, setMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -67,4 +67,4 @@ const WelcomeComponent = () => {
   );
 };
 
-export default WelcomeComponent;
+export default UseStateDemoComponent;
