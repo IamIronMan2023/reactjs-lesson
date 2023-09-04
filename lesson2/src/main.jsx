@@ -36,6 +36,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // function getName() {
 //   return "davy";
 // }
+const isPrintH1 = true;
 
 // const element = (
 //   <div class="hello">
@@ -43,6 +44,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 //     <h1>Hello World {getName()}</h1>
 //     <h1>Hello World Again </h1>
 //     <h1>{2 * 2}</h1>
+
+//Note: for you next bootcamp do research on conditional syntax of jsx
+
+// the code below is conditional print
+// {
+//   isPrintH1 && <h1>Hello World</h1>;
+// }
+
+// the code below is ternary operator
+// {
+//   isPrintH1 ? <h1>Hello World</h1> : "";
+// }
+
 //   </div>
 // );
 
