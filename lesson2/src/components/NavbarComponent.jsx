@@ -1,7 +1,10 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+import { useAuth } from "../contexts/AuthContext";
 
 const NavbarComponent = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Navbar expand="lg" bg="primary" data-bs-theme="dark" className="mb-3">
       <Container>
@@ -24,11 +27,13 @@ const NavbarComponent = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-end">
-          <Nav>
-            <Nav.Link href="/logout">Log Out</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
+        {isAuthenticated && (
+          <Navbar.Collapse className="justify-content-end">
+            <Nav>
+              <Nav.Link href="/logout">Log Out</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        )}
       </Container>
     </Navbar>
   );

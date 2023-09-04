@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, AuthContext } from "../contexts/AuthContext";
+import { Button, Form } from "react-bootstrap";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -41,32 +42,35 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleLogin}>
-      <p>
-        <h2>Login User</h2>
-        <label> Email </label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          required="required"
-        />
-      </p>
-      <p>
-        <label> Password </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </p>
-
-      <input type="submit" value="Login" />
-    </form>
+    <>
+      <h3>Employee List</h3>
+      <Form onSubmit={handleLogin}>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label> Email </Form.Label>
+          <Form.Control
+            type="text"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            required="required"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label> Password </Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Login
+        </Button>
+      </Form>
+    </>
   );
 };
 

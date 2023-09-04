@@ -61,27 +61,25 @@ function App() {
 
       <NavbarComponent />
       <Container>
-        <AuthProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route element={<SecureRoute />}>
-                <Route path="/" element={<EmployeeList />} exact></Route>
-                <Route path="/employees/:id" element={<EmployeeView />}></Route>
-                <Route
-                  path="/employees/create"
-                  element={<EmployeeCreate />}
-                ></Route>
-                <Route
-                  path="/employees/edit/:id"
-                  element={<EmployeeEdit />}
-                ></Route>
-                <Route path="/logout" element={<Logout />}></Route>
-              </Route>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="*" element={<NotFound />}></Route>
-            </Routes>
-          </BrowserRouter>
-        </AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<SecureRoute />}>
+              <Route path="/" element={<EmployeeList />} exact></Route>
+              <Route path="/employees/:id" element={<EmployeeView />}></Route>
+              <Route
+                path="/employees/create"
+                element={<EmployeeCreate />}
+              ></Route>
+              <Route
+                path="/employees/edit/:id"
+                element={<EmployeeEdit />}
+              ></Route>
+              <Route path="/logout" element={<Logout />}></Route>
+            </Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+          </Routes>
+        </BrowserRouter>
       </Container>
     </>
   );

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import { Button } from "react-bootstrap";
+import { Search, PlusSquare } from "react-bootstrap-icons";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
@@ -40,15 +42,16 @@ const EmployeeList = () => {
 
   return (
     <>
-      <h2>Employee List</h2>
+      <h3>Employee List</h3>
       {loading ? (
         <h3>Loading...</h3>
       ) : (
         <>
-          <p>
-            <Link to="/employees/create">Add New Employee</Link>
-          </p>
-
+          <Link to="/employees/create">
+            <Button class="btn btn-primary">
+              <i class="fa fa-plus"></i> Add New Employee
+            </Button>
+          </Link>
           <table className="table">
             <thead>
               <tr>
@@ -65,7 +68,11 @@ const EmployeeList = () => {
                   <td>{employee.last_name}</td>
                   <td>{employee.email}</td>
                   <td>
-                    <Link to={`/employees/${employee.id}`}>View</Link>
+                    <Link to={`/employees/${employee.id}`}>
+                      <Button>
+                        <Search />
+                      </Button>
+                    </Link>
                   </td>
                 </tr>
               ))}
