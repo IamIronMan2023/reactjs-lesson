@@ -18,6 +18,10 @@ import DemoComponent2 from "./components/DemoComponent2";
 import UseRefDemoComponent from "./components/UseRefDemoComponent";
 import UseMemoDemoComponent from "./components/UseMemoDemoComponent";
 import UseCallbackDemoComponent from "./components/useCallBackDemoComponent";
+import "bootstrap/dist/css/bootstrap.min.css";
+import NavbarComponent from "./components/NavbarComponent";
+import { Container } from "react-bootstrap";
+import Logout from "./pages/Logout";
 
 function App() {
   return (
@@ -41,27 +45,6 @@ function App() {
 
       {/* <EmployeeList /> */}
 
-      {/* <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<SecureRoute />}>
-              <Route path="/" element={<EmployeeList />} exact></Route>
-              <Route path="/employees/:id" element={<EmployeeView />}></Route>
-              <Route
-                path="/employees/create"
-                element={<EmployeeCreate />}
-              ></Route>
-              <Route
-                path="/employees/edit/:id"
-                element={<EmployeeEdit />}
-              ></Route>
-            </Route>
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="*" element={<NotFound />}></Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider> */}
-
       {/* <AuthProviderDemo>
         <BrowserRouter>
           <Routes>
@@ -74,7 +57,32 @@ function App() {
       {/* <UseRefDemoComponent /> */}
 
       {/* <UseMemoDemoComponent /> */}
-      <UseCallbackDemoComponent />
+      {/* <UseCallbackDemoComponent /> */}
+
+      <NavbarComponent />
+      <Container>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<SecureRoute />}>
+                <Route path="/" element={<EmployeeList />} exact></Route>
+                <Route path="/employees/:id" element={<EmployeeView />}></Route>
+                <Route
+                  path="/employees/create"
+                  element={<EmployeeCreate />}
+                ></Route>
+                <Route
+                  path="/employees/edit/:id"
+                  element={<EmployeeEdit />}
+                ></Route>
+                <Route path="/logout" element={<Logout />}></Route>
+              </Route>
+              <Route path="/login" element={<Login />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
+      </Container>
     </>
   );
 }

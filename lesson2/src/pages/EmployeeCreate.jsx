@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
+import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const EmployeeCreate = () => {
   const [employee, setEmployee] = useState({
@@ -11,6 +13,7 @@ const EmployeeCreate = () => {
   });
 
   const navigate = useNavigate();
+  const { token } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +24,7 @@ const EmployeeCreate = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
 
       body: JSON.stringify({
@@ -48,67 +52,69 @@ const EmployeeCreate = () => {
 
   return (
     <div>
-      <h1>Add new employee</h1>
-      <form onSubmit={handleSubmit}>
-        <p>
-          <label>First Name</label>
-          <input
+      <h3 className="text-center">Add new employee</h3>
+      <Form onSubmit={handleSubmit}>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label>First Name </Form.Label>
+          <Form.Control
             type="text"
             name="firstName"
             value={employee.firstName}
             onChange={handleChanged}
             required="required"
           />
-        </p>
-        <p>
-          <label>Last Name</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control
             type="text"
             name="lastName"
             value={employee.lastName}
             onChange={handleChanged}
             required="required"
           />
-        </p>
-        <p>
-          <label>Age</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label>Age</Form.Label>
+          <Form.Control
             type="number"
             name="age"
             value={employee.age}
             onChange={handleChanged}
             required="required"
           />
-        </p>
-        <p>
-          <label>Email Address</label>
-          <input
+        </Form.Group>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label>Email Address</Form.Label>
+          <Form.Control
             type="email"
             name="email"
             value={employee.email}
             onChange={handleChanged}
             required="required"
           />
-        </p>
-        <p>
-          <label>Gender</label>
-          <select
+        </Form.Group>
+        <Form.Group className="mb-3 col-md-4">
+          <Form.Label>Gender</Form.Label>
+          <Form.Select
             name="gender"
             value={employee.gender}
             onChange={handleChanged}
             required
-            focus
+            focus="true"
           >
-            <option selected disabled value="">
+            <option defaultValue disabled value="">
               Select Gender
             </option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
-          </select>
-        </p>
+          </Form.Select>
+        </Form.Group>
 
-        <input type="submit" value="Save" />
-      </form>
+        <Button variant="primary" type="submit">
+          Save
+        </Button>
+      </Form>
     </div>
   );
 };
