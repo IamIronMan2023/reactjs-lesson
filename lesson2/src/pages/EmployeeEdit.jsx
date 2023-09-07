@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const EmployeeEdit = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const EmployeeEdit = () => {
     gender: "",
   });
   const [loading, setLoading] = useState(false);
+  const { token } = useAuth();
 
   const navigate = useNavigate();
   const url = `${import.meta.env.VITE_API_URL}/employees/${id}`;
@@ -23,6 +25,7 @@ const EmployeeEdit = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     };
     setLoading(true);
@@ -31,6 +34,8 @@ const EmployeeEdit = () => {
       .then((json) => {
         setEmployee(json);
         setLoading(false);
+
+        console.log(json);
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +43,7 @@ const EmployeeEdit = () => {
     return () => {
       controller.abort();
     };
-  }, [id]);
+  }, []);
 
   const handleChanged = (e) => {
     const { name, value } = e.target;
@@ -127,7 +132,7 @@ const EmployeeEdit = () => {
                 value={employee.gender}
                 onChange={handleChanged}
                 required
-                focus
+                focus="true"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>

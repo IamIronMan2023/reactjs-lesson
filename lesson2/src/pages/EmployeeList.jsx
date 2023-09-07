@@ -48,8 +48,8 @@ const EmployeeList = () => {
       ) : (
         <>
           <Link to="/employees/create">
-            <Button class="btn btn-primary">
-              <i class="fa fa-plus"></i> Add New Employee
+            <Button className="btn btn-primary">
+              <i className="fa fa-plus"></i> Add New Employee
             </Button>
           </Link>
           <table className="table">
