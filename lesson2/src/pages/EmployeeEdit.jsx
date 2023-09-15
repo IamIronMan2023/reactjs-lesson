@@ -72,7 +72,7 @@ const EmployeeEdit = () => {
     fetch(url, requestOptions)
       .then((response) => response.json())
       .then((json) => {
-        navigate(`/employees/${json.employee.id}`);
+        navigate(`/employees/${id}`);
       });
   };
 

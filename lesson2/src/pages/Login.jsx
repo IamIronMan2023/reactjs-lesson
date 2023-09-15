@@ -15,7 +15,7 @@ const Login = () => {
   async function handleLogin(e) {
     e.preventDefault();
 
-    const url = `${import.meta.env.VITE_API_URL}/login`;
+    const url = `${import.meta.env.VITE_API_URL}/users/login`;
 
     const requestOptions = {
       method: "POST",

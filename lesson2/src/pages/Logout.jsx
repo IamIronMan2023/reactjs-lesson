@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 const Logout = () => {
   const { token, setToken, setIsAuthenticated } = useAuth();
-  const url = `${import.meta.env.VITE_API_URL}/logout`;
+  const url = `${import.meta.env.VITE_API_URL}/users/logout`;
 
   useEffect(() => {
     async function doLogout() {
@@ -14,6 +14,9 @@ const Logout = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({
+          access_token: token,
+        }),
       };
 
       const fetchResponse = await fetch(url, requestOptions);
